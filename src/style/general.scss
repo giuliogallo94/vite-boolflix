@@ -1,0 +1,5 @@
+@use "./partials/variables" as *;
+@use "./partials/mixins" as *;
+
+@import "bootstrap/scss/bootstrap.scss";
+@import "@fortawesome/fontawesome-free/css/all.css";
