@@ -21,7 +21,7 @@ export default {
     //     },
     //   })
     //   .then((resp) => {
-    //     this.store.filmsArray = resp.data.results;
+    //     this.store.mediaArray = resp.data.results;
     //     console.log(resp.data.results);
     //   });
   },
@@ -32,10 +32,11 @@ export default {
           params: {
             api_key: "ce56ed10841e74923882d40ea5b5f01d",
             query: this.store.searchText,
+            media_type: "movie" || "tv",
           },
         })
         .then((resp) => {
-          this.store.filmsArray = resp.data.results;
+          this.store.mediaArray = resp.data.results;
           console.log(resp.data.results);
         });
     },
@@ -51,9 +52,9 @@ export default {
     // },
     showFlag(movieInfo, flagInfo) {
       if (movieInfo.original_language == flagInfo.name) {
-        return `<img src="${flagInfo.flagUrl}" alt="${flagInfo.name}">`;
+        return `Lingua: <img src="${flagInfo.flagUrl}" alt="${flagInfo.name}" class="flag">`;
       } else {
-        return `${movieInfo.original_language}`;
+        return `Lingua: ${movieInfo.original_language}`;
       }
     },
   },
@@ -63,23 +64,24 @@ export default {
 <template>
   <AppSearch @searchInput="searchMovie" />
   <ul class="list-group">
-    <!-- <img src="../src/assets/img/fr.png" alt="" /> -->
-
     <!-- Single Movie -->
 
     <li
-      v-for="(movie, index) in store.filmsArray"
+      v-for="(movie, index) in store.mediaArray"
       :key="index"
       class="p-3 border border-dark">
       <ul class="list-group px-4">
-        <li>Titolo: {{ movie.title }}</li>
-        <li>Titolo Originale: {{ movie.original_title }}</li>
+        <li>Titolo: {{ movie.title || movie.name }}</li>
+        <li>
+          Titolo Originale: {{ movie.original_title || movie.original_name }}
+        </li>
         <li
           v-for="(flag, index) in store.flagsArray"
           v-html="showFlag(movie, flag)"></li>
 
         <!-- <li v-if="showFlag(movie)" :key="index"></li> -->
-        <li>Voto: {{ movie.vote_average }}</li>
+        <li>Voto: {{ Math.ceil(movie.vote_average) }}</li>
+        <li>Tipo: {{ movie.media_type }}</li>
       </ul>
     </li>
   </ul>
@@ -87,4 +89,7 @@ export default {
 
 <style lang="scss">
 @use "./style/general.scss";
+.flag {
+  width: 25px;
+}
 </style>

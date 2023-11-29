@@ -1,9 +1,9 @@
 import { reactive } from "vue";
 
 export const store = reactive({
-  filmsArray: [],
+  mediaArray: [],
   searchText: "",
-  apiUrl: "https://api.themoviedb.org/3/search/movie",
+  apiUrl: "https://api.themoviedb.org/3/search/multi",
   flagsArray: [
     {
       name: "it",
