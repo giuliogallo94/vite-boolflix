@@ -39,8 +39,8 @@ export default {
 </script>
 
 <template>
-  <header class="d-flex justify-content-between">
-    <div class="logo"></div>
+  <header class="d-flex justify-content-between align-items-center p-4">
+    <div class="logo px-2"><img src="../assets/img/logo.png" alt="" /></div>
     <AppSearch @searchInput="search" />
   </header>
 </template>

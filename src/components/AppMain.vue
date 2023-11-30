@@ -1,7 +1,6 @@
 <script>
 import { store } from "../store";
 import AppCard from "./AppCard.vue";
-import AppTest from "./AppTest.vue";
 
 export default {
   data() {
@@ -11,7 +10,6 @@ export default {
   },
   components: {
     AppCard,
-    AppTest,
   },
 };
 </script>
