@@ -17,6 +17,9 @@ export default {
     showGenres() {
       console.log("ciao");
       this.store.genresArraySearch.length = 0;
+      this.store.searchText = "";
+      this.store.movieArray.length = 0;
+      this.store.tvArray.length = 0;
       for (let i = 0; i < this.store.popularMovieArray.length; i++) {
         if (
           this.store.popularMovieArray[i].genre_ids.includes(
@@ -29,6 +32,8 @@ export default {
       console.log(this.store.genresArraySearch);
     },
     search() {
+      this.store.genresArraySearch.length = 0;
+      this.store.genresChoosen = "";
       const params = {
         api_key: "ce56ed10841e74923882d40ea5b5f01d",
         query: this.store.searchText,

@@ -35,9 +35,12 @@ export default {
 <template>
   <AppHeader />
   <AppMainHome
-    v-if="(this.store.searchText == ``) & (this.store.genresChoosen == ``)" />
-  <ShowGenres v-if="this.store.genresChoosen != ``" />
-  <AppMain v-if="this.store.searchText" />
+    v-if="
+      (this.store.movieArray.length == 0) & (this.store.genresChoosen == ``)
+    " />
+  <ShowGenres v-if="this.store.genresArraySearch.length > 0" />
+  <AppMain
+    v-if="this.store.movieArray.length > 0 || this.store.tvArray.length > 0" />
 </template>
 
 <style lang="scss">
