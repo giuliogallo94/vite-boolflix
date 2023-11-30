@@ -2,6 +2,7 @@
 import axios from "axios";
 import { store } from "../store";
 import AppSearch from "./AppSearch.vue";
+import AppGenresSearch from "./AppGenresSearch.vue";
 export default {
   data() {
     return {
@@ -10,8 +11,23 @@ export default {
   },
   components: {
     AppSearch,
+    AppGenresSearch,
   },
   methods: {
+    showGenres() {
+      console.log("ciao");
+      this.store.genresArraySearch.length = 0;
+      for (let i = 0; i < this.store.popularMovieArray.length; i++) {
+        if (
+          this.store.popularMovieArray[i].genre_ids.includes(
+            this.store.genresChoosen
+          )
+        ) {
+          this.store.genresArraySearch.push(this.store.popularMovieArray[i]);
+        }
+      }
+      console.log(this.store.genresArraySearch);
+    },
     search() {
       const params = {
         api_key: "ce56ed10841e74923882d40ea5b5f01d",
@@ -41,6 +57,7 @@ export default {
 <template>
   <header class="d-flex justify-content-between align-items-center p-4">
     <div class="logo px-2"><img src="../assets/img/logo.png" alt="" /></div>
+    <AppGenresSearch @searchGenres="showGenres" />
     <AppSearch @searchInput="search" />
   </header>
 </template>

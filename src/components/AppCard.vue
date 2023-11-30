@@ -18,11 +18,6 @@ export default {
             class="fa-regular fa-star"></i>`;
     },
   },
-  computed: {
-    // hasFlag() {
-    //   return this.store.flagsArray.includes(movie.original_language);
-    // },
-  },
   props: {
     mediaObj: Object,
   },
@@ -31,11 +26,6 @@ export default {
 
 <template>
   <li class="p-3">
-    <!-- quando carichi la pagina -->
-
-    <!-- **** -->
-
-    <!-- Alla ricerca -->
     <div
       class="media-poster"
       :style="{
@@ -72,8 +62,6 @@ export default {
             <span class="main-red">Overview:</span>
             {{ mediaObj.overview }}
           </li>
-
-          <!-- <li v-html="voteInStars()"></li> -->
         </ul>
       </div>
     </div>
