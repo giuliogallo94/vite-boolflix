@@ -36,7 +36,9 @@ export default {
   <AppHeader />
   <AppMainHome
     v-if="
-      (this.store.movieArray.length == 0) & (this.store.genresChoosen == ``)
+      (this.store.movieArray.length == 0 || this.store.tvArray.length == 0) &
+      (this.store.genresArraySearch.length == 0) &
+      (this.store.searchText == ``)
     " />
   <ShowGenres v-if="this.store.genresArraySearch.length > 0" />
   <AppMain
