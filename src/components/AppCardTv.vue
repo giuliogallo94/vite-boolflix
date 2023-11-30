@@ -23,7 +23,7 @@ export default {
 <template>
   <ul class="list-group">
     <li
-      v-for="(mediaObj, index) in store.movieArray"
+      v-for="(mediaObj, index) in store.tvArray"
       :key="index"
       class="p-3 border border-dark">
       <ul class="list-group px-4">
