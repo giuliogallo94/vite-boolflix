@@ -31,6 +31,11 @@ export default {
 
 <template>
   <li class="p-3">
+    <!-- quando carichi la pagina -->
+
+    <!-- **** -->
+
+    <!-- Alla ricerca -->
     <div
       class="media-poster"
       :style="{
@@ -54,16 +59,20 @@ export default {
               class="flag" />
             <p class="m-0" v-else>{{ mediaObj.original_language }}</p>
           </li>
-          <li v-if="mediaObj.vote_average > 0">
+          <li>
             Voto:
             <i
               v-for="i in Math.ceil(mediaObj.vote_average / 2)"
               class="fa-solid fa-star"></i>
+            <i
+              v-for="i in 5 - Math.ceil(mediaObj.vote_average / 2)"
+              class="fa-regular fa-star"></i>
           </li>
-          <li v-else>
-            <span class="main-red">Voto:</span>
-            <i v-for="i in 5" class="fa-solid fa-star"></i>
+          <li>
+            <span class="main-red">Overview:</span>
+            {{ mediaObj.overview }}
           </li>
+
           <!-- <li v-html="voteInStars()"></li> -->
         </ul>
       </div>
@@ -82,6 +91,7 @@ export default {
   .info {
     display: none;
     background-color: #141414dd;
+    overflow-y: scroll;
 
     .null-img {
       width: 342px;
