@@ -23,8 +23,6 @@ export default {
 </template>
 
 <style lang="scss">
+@use "./style/partials/variables" as *;
 @use "./style/general.scss";
-.flag {
-  width: 25px;
-}
 </style>

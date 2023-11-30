@@ -15,20 +15,33 @@ export default {
 </script>
 
 <template>
-  <div class="boolflix-list d-flex">
+  <div class="boolflix-list d-flex flex-column">
     <div class="movies">
       <h2>Movies</h2>
-      <ul class="list-group">
-        <AppCard v-for="movie in store.movieArray" :mediaObj="movie" />
-      </ul>
+      <div class="movies-list">
+        <ul class="list-group list-group-horizontal list-unstyled">
+          <AppCard v-for="movie in store.movieArray" :mediaObj="movie" />
+        </ul>
+      </div>
     </div>
-    <div class="tv">
+    <div class="tv pt-5">
       <h2>TV Series</h2>
-      <ul class="list-group">
-        <AppCard v-for="tvSeries in store.tvArray" :mediaObj="tvSeries" />
-      </ul>
+      <div class="tv-list">
+        <ul class="list-group list-group-horizontal list-unstyled">
+          <AppCard v-for="tvSeries in store.tvArray" :mediaObj="tvSeries" />
+        </ul>
+      </div>
     </div>
   </div>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.boolflix-list {
+  h2 {
+    margin-left: 2rem;
+  }
+  ul {
+    overflow-x: scroll;
+  }
+}
+</style>
