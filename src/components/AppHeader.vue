@@ -14,20 +14,47 @@ export default {
     AppGenresSearch,
   },
   methods: {
+    // showGenres() {
+    //   this.store.genresArraySearch.length = 0;
+    //   this.store.searchText = "";
+    //   this.store.movieArray.length = 0;
+    //   this.store.tvArray.length = 0;
+    //   for (let i = 0; i < this.store.popularMovieArray.length; i++) {
+    //     if (
+    //       this.store.popularMovieArray[i].genre_ids.includes(
+    //         this.store.genresChoosen
+    //       )
+    //     ) {
+    //       this.store.genresArraySearch.push(this.store.popularMovieArray[i]);
+    //     }
+    //   }
+    // },
     showGenres() {
-      this.store.genresArraySearch.length = 0;
+      this.store.genresMovieArray.length = 0;
+      this.store.genresTvArray.length = 0;
       this.store.searchText = "";
       this.store.movieArray.length = 0;
       this.store.tvArray.length = 0;
-      for (let i = 0; i < this.store.popularMovieArray.length; i++) {
-        if (
-          this.store.popularMovieArray[i].genre_ids.includes(
-            this.store.genresChoosen
-          )
-        ) {
-          this.store.genresArraySearch.push(this.store.popularMovieArray[i]);
-        }
-      }
+      const params = {
+        api_key: this.store.apiKey,
+        with_genres: this.store.genresChoosen,
+      };
+      axios
+        .get(`${this.store.apiUrlBase}discover/movie`, {
+          params,
+        })
+        .then((resp) => {
+          this.store.genresMovieArray = resp.data.results;
+          console.log(resp.data.results);
+        });
+      axios
+        .get(`${this.store.apiUrlBase}discover/tv`, {
+          params,
+        })
+        .then((resp) => {
+          this.store.genresTvArray = resp.data.results;
+          console.log(resp.data.results);
+        });
     },
     search() {
       this.store.genresArraySearch.length = 0;

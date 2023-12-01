@@ -38,18 +38,26 @@ export default {
   <AppHeader />
   <AppNoResults
     v-if="
-      (this.store.genresArraySearch.length == 0) &
-      (this.store.genresChoosen != ``)
+      (this.store.genresMovieArray.length == 0 ||
+        this.store.genresTvArray.length == 0) &
+        (this.store.genresChoosen != ``) ||
+      (this.store.searchText != ``) &
+        (this.store.movieArray.length == 0 || this.store.tvArray.length == 0)
     " />
   <AppMainHome
     v-if="
       (this.store.movieArray.length == 0 || this.store.tvArray.length == 0) &
-      (this.store.genresArraySearch.length == 0) &
+      (this.store.genresMovieArray.length == 0 ||
+        this.store.genresTvArray.length == 0) &
       (this.store.searchText == ``) &
       (this.store.genresChoosen == ``)
     " />
 
-  <ShowGenres v-if="this.store.genresArraySearch.length > 0" />
+  <ShowGenres
+    v-if="
+      this.store.genresMovieArray.length > 0 ||
+      this.store.genresMovieArray.length > 0
+    " />
 
   <AppMain
     v-if="this.store.movieArray.length > 0 || this.store.tvArray.length > 0" />
