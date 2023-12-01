@@ -15,7 +15,6 @@ export default {
   },
   methods: {
     showGenres() {
-      console.log("ciao");
       this.store.genresArraySearch.length = 0;
       this.store.searchText = "";
       this.store.movieArray.length = 0;
@@ -29,7 +28,6 @@ export default {
           this.store.genresArraySearch.push(this.store.popularMovieArray[i]);
         }
       }
-      console.log(this.store.genresArraySearch);
     },
     search() {
       this.store.genresArraySearch.length = 0;
@@ -61,7 +59,11 @@ export default {
 
 <template>
   <header class="d-flex justify-content-between align-items-center p-4">
-    <div class="logo px-2"><img src="../assets/img/logo.png" alt="" /></div>
+    <div class="logo px-2">
+      <a href="index.html">
+        <img src="../assets/img/logo.png" alt="" />
+      </a>
+    </div>
     <AppGenresSearch @searchGenres="showGenres" />
     <AppSearch @searchInput="search" />
   </header>

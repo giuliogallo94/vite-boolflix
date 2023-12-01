@@ -5,6 +5,7 @@ import AppHeader from "../src/components/AppHeader.vue";
 import AppMain from "../src/components/AppMain.vue";
 import AppMainHome from "./components/AppMainHome.vue";
 import ShowGenres from "./components/ShowGenres.vue";
+import AppNoResults from "./components/AppNoResults.vue";
 export default {
   data() {
     return {
@@ -16,6 +17,7 @@ export default {
     AppMain,
     AppMainHome,
     ShowGenres,
+    AppNoResults,
   },
   mounted() {
     axios
@@ -34,13 +36,21 @@ export default {
 
 <template>
   <AppHeader />
+  <AppNoResults
+    v-if="
+      (this.store.genresArraySearch.length == 0) &
+      (this.store.genresChoosen != ``)
+    " />
   <AppMainHome
     v-if="
       (this.store.movieArray.length == 0 || this.store.tvArray.length == 0) &
       (this.store.genresArraySearch.length == 0) &
-      (this.store.searchText == ``)
+      (this.store.searchText == ``) &
+      (this.store.genresChoosen == ``)
     " />
+
   <ShowGenres v-if="this.store.genresArraySearch.length > 0" />
+
   <AppMain
     v-if="this.store.movieArray.length > 0 || this.store.tvArray.length > 0" />
 </template>

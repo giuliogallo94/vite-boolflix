@@ -8,6 +8,7 @@ export const store = reactive({
   genresArraySearch: [],
   mediaGenres: [],
   provaArray: [],
+  resultTitle: "",
   searchText: "",
   genresChoosen: "",
   apiUrlBase: "https://api.themoviedb.org/3/",
