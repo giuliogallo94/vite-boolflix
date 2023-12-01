@@ -38,7 +38,7 @@ export default {
 </script>
 
 <template>
-  <div class="boolflix-list d-flex flex-column">
+  <div class="boolflix-list d-flex flex-column mb-3">
     <div class="movies">
       <h2>Popular Movies</h2>
       <div class="movies-list">
