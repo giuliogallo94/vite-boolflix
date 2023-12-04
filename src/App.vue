@@ -23,26 +23,50 @@ export default {
     axios
       .get(`${this.store.apiUrlBase}genre/movie/list`, {
         params: {
-          api_key: "ce56ed10841e74923882d40ea5b5f01d",
+          api_key: this.store.apiKey,
         },
       })
       .then((resp) => {
         this.store.mediaGenres = resp.data.genres;
-        // console.log(resp.data.genres);
       });
   },
+  // <******************>
+  // Movies and TV series genres list
+  // axios
+  //   .get(`${this.store.apiUrlBase}genre/tv/list`, {
+  //     params: {
+  //       api_key: "ce56ed10841e74923882d40ea5b5f01d",
+  //     },
+  //   })
+  //   .then((resp) => {
+  //     this.store.tvGenresList = resp.data.genres;
+  //     console.log(resp.data.genres);
+  //   });
+
+  // axios
+  //   .get(`${this.store.apiUrlBase}genre/movie/list`, {
+  //     params: {
+  //       api_key: "ce56ed10841e74923882d40ea5b5f01d",
+  //     },
+  //   })
+  //   .then((resp) => {
+  //     this.store.movieGenresList = resp.data.genres;
+  // <******************>
+  //     });
+  // },
 };
 </script>
 
 <template>
   <AppHeader />
+
   <AppNoResults
     v-if="
-      (this.store.genresMovieArray.length == 0 ||
-        this.store.genresTvArray.length == 0) &
-        (this.store.genresChoosen != ``) ||
+      (this.store.genresMovieArray.length == 0) &
+      (this.store.genresTvArray.length == 0) &
+      (this.store.genresChoosen != ``) &
       (this.store.searchText != ``) &
-        (this.store.movieArray.length == 0 || this.store.tvArray.length == 0)
+      (this.store.movieArray.length == 0 || this.store.tvArray.length == 0)
     " />
   <AppMainHome
     v-if="

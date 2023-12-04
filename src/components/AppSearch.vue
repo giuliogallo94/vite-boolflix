@@ -29,10 +29,11 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+@use "../style/partials/variables" as *;
 @import "@fortawesome/fontawesome-free/css/all.css";
 
 button {
-  background-color: #dc1a28;
+  background-color: $mainRed;
 
   i {
     color: black;

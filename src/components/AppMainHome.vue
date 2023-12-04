@@ -21,7 +21,6 @@ export default {
       })
       .then((resp) => {
         this.store.popularMovieArray = resp.data.results;
-        // console.log(resp.data.results);
       }),
       axios
         .get(`${this.store.apiUrlBase}movie/top_rated`, {
@@ -31,7 +30,6 @@ export default {
         })
         .then((resp) => {
           this.store.topRatedMovieArray = resp.data.results;
-          //   console.log(resp.data.results);
         });
   },
 };
